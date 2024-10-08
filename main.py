@@ -10,3 +10,15 @@ def backspace(entry):
     input_len = len(entry.get())
     entry.delete(input_len - 1)
 
+def clear(entry):
+    entry.delete(0,END)
+
+def calc(entry):
+    input_info = entry.get()
+    try:
+        output = str(eval(input_info.strip()))
+    except ZeroDivisionError:
+        popupmsg()
+        output = ""
+    clear(entry)
+    entry.insert(END,output)
